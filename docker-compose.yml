@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: aula-postgres
+    environment:
+      POSTGRES_USER: aluno
+      POSTGRES_PASSWORD: aluno123
+      POSTGRES_DB: aula
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
